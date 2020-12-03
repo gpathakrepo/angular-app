@@ -1,0 +1,10 @@
+<!-- <div class="buttons">
+  <button data-zoom="+1">Zoom In</button>
+  <button data-zoom="-1">Zoom Out</button>
+</div>
+<div class="col">
+  <svg class="chart"></svg>
+</div> -->
+<div *ngIf="graph.data">
+  <plotly-plot [data]="graph.data" [layout]="graph.layout"></plotly-plot>
+</div>

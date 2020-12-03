@@ -1,0 +1,91 @@
+<div class="tab-layout" #content>
+  <ngb-tabset #t="ngbTabset">
+    <ngb-tab *ngFor="let tab of tabs;let i=index" id="{{tab.id}}">
+      <ng-template ngbTabTitle>
+        <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
+          <button id="dropdownManual" ngbDropdownAnchor (focus)="myDrop.open()" class="hamburg-menu">
+            <div></div>
+            <div></div>
+            <div></div>
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownManual">
+            <button ngbDropdownItem (click)="openPopup(content,tab)">Rename</button>
+            <button ngbDropdownItem (click)="saveTab(tab)">Save</button>
+            <button ngbDropdownItem (click)="exportTab(tab)">Export</button>
+          </div>
+        </div>
+        <span [hidden]="tab.active" class="save-icon">
+          <i class="fa fa-floppy-o" aria-hidden="true"></i>
+        </span>
+        <span class="title">{{tab.name}}</span>
+        <span>
+          <button class="close" (click)="onClose(tab.id,$event)">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </span>
+      </ng-template>
+      <!-- Modal code -->
+      <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title">Rename</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="col"><input type="text" class="form-control" [(ngModel)]="editedTab.name" /></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light"
+            (click)="rename(editedTab.name,editedTab.id);modal.close('Close click')">Ok</button>
+          <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cancel</button>
+        </div>
+      </ng-template>
+      <ng-template ngbTabContent class="tab-content">
+        <div id="testId">
+          <div class="row qs-layout">
+            <div class="col-10">
+              <input #questionText type="text" class="form-control" [(ngModel)]="tab.question" required />
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-outline-secondary"
+                (click)="askme(questionText.value,i)">Askme</button>
+            </div>
+          </div>
+          <div class="content-layout" *ngIf="tab.lineGraph || tab.barGraph">
+            <!-- <div class="row no-margin">
+              <div class="col">
+                <span class="col-8">{{question}}</span>
+              </div>
+            </div> -->
+            <!-- <app-textcomponent></app-textcomponent> -->
+            <div class="row chart-div">
+              <div class="col chart-section" *ngIf="tab.lineGraph && tab.lineGraph.data">
+                <div class="col-8 chart-layout">
+                  <!-- <app-linechart [labels]="lineLabels" [dataSet]="lineDataSet"></app-linechart> -->
+                  <div>
+                    <plotly-plot [data]="tab.lineGraph.data" [layout]="tab.lineGraph.layout"></plotly-plot>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="col-8 chart-layout" *ngIf="tab.barGraph && tab.barGraph.data">
+                  <!-- <app-barchart [labels]="barLabels" [dataSet]="barDataSet"></app-barchart> -->
+                  <div>
+                    <plotly-plot [data]="tab.barGraph.data" [layout]="tab.barGraph.layout"></plotly-plot>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab id="{{idCounter}}">
+      <ng-template ngbTabTitle><span class="newTab" (click)="addNewTab(idCounter)">+</span>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+</div>

@@ -1,0 +1,7 @@
+<section class="chart-section">
+  <div>
+    <div *ngIf="candelgraph.data">
+      <plotly-plot [data]="candelgraph.data" [layout]="candelgraph.layout"></plotly-plot>
+    </div>
+  </div>
+</section>

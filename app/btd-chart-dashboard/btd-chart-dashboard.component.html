@@ -1,0 +1,89 @@
+<div class="container" ng-controller="MainCtrl">
+  <div class="row justify-content-left" style="font-size:12px;">
+
+    <div class="col-3" style="font-size:12px;">
+      <label>Center:</label>
+      <select id="center" name="center" style="font-size:12px;" (change)="onChange()">
+        <option value="CDER">CDER</option>
+        <option value="CBER">CBER</option>
+        <option value="CDRH">CDRH</option>
+      </select>
+    </div>
+
+    <div class="col-5" style="font-size:12px;">
+      <label>Indication: </label>
+      <select name="indication" id="indication" style="font-size:12px;" (change)="onChange()">
+        <option value="Neoplasms">Neoplasms</option>
+        <option value="Mental+Illness">Mental Illness</option>
+        <option value="Diseases+of+the+nervous+system+and+sense+organs">Diseases of the nervous system and sense organs
+        </option>
+        <option value="Diseases+of+the+blood+and+blood-forming+organs">Diseases of the blood and blood-forming organs
+        </option>
+        <option value="Diseases+of+the+respiratory+system">Diseases of the respiratory system</option>
+        <option value="Diseases+of+the+digestive+system">Diseases of the digestive system</option>
+        <option value="Diseases+of+the+circulatory+system">Diseases of the circulatory system</option>
+        <option value="Infectious+and+parasitic+diseases">Infectious and parasitic diseases</option>
+        <option value="Diseases+of+the+genitourinary+system">Diseases of the genitourinary system</option>
+        <option value="Congenital+anomalies">Congenital anomalies</option>
+        <option value="Injury+and+poisoning">Injury and poisoning</option>
+        <option value="Diseases+of+the+musculoskeletal+system+and+connective+tissue">Diseases of the musculoskeletal
+          system and connective tissue</option>
+        <option value="Diseases+of+the+skin+and+subcutaneous+tissue">Diseases of the skin and subcutaneous tissue
+        </option>
+      </select>
+    </div>
+
+    <div class="col-4" style="font-size:12px;">
+      <label>Drug Class:</label>
+      <select style="font-size:12px;" name="drugclass" id="drugclass" style="font-size:12px;" (change)="onChange()">
+        <option value="Antibody">Antibody</option>
+        <option value="Kinase+Inhibitor">Kinase Inhibitor</option>
+        <option value="Others">Others</option>
+      </select>
+    </div>
+
+  </div>
+  <div class="row justify-content-center">
+    <div class="col">
+      <div class="card bg-light">
+        <div class="card-body">
+          <div *ngIf="graph.data">
+            <plotly-plot [data]="graph.data" [layout]="graph.layout"></plotly-plot>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col">
+      <div class="card bg-light">
+        <div class="card-body">
+          <div *ngIf="linegraph.data">
+            <plotly-plot [data]="linegraph.data" [layout]="linegraph.layout"></plotly-plot>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="">
+    <div class="card bg-light">
+      <div class="card-body text-center">
+        <div *ngIf="candleStick.data">
+          <plotly-plot [data]="candleStick.data" [layout]="candleStick.layout"></plotly-plot>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card bg-light">
+      <div class="card-body text-center">
+        <div *ngIf="treegraph.data">
+          <plotly-plot [data]="treegraph.data" [layout]="treegraph.layout"></plotly-plot>
+        </div>
+        <div *ngIf="linegraph.data">
+          <plotly-plot [data]="linegraph.data" [layout]="linegraph.layout"></plotly-plot>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

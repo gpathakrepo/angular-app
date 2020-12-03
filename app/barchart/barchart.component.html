@@ -1,0 +1,9 @@
+<section class="chart-section">
+  <div>
+    <div style="display: block" *ngIf="dataSet">
+      <canvas baseChart [datasets]="dataSet" [labels]="labels" [options]="barChartOptions"
+         [chartType]="barChartType" [colors]="chartColors">
+      </canvas>
+    </div>
+  </div>
+</section>

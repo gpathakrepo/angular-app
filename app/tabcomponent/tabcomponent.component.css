@@ -1,0 +1,107 @@
+.tab-layout {
+    padding: 2em 1em;
+}
+
+.qs-layout {
+    margin: 3em 1em;
+}
+
+.chart-layout {
+    padding: 15px;
+}
+
+.content-layout {
+  
+}
+
+:host ::ng-deep.nav-tabs {
+    border-bottom: 0;
+}
+
+:host ::ng-deep .newTab {
+    background: #e2e8ef;
+    position: relative;
+    bottom: 3px;
+    border-radius: 4px;
+    padding: 0px 5px;
+    border: 1px solid #afaeae;
+    top: 4px;
+}
+
+:host ::ng-deep .tab-content {
+    border: 1px solid #dee2e6;
+}
+
+:host ::ng-deep .nav-link.active {
+    position: relative;
+    top: 1px;
+}
+
+.add-btn {
+    border-radius: 4px;
+    box-shadow: none;
+    border: 1px solid #afaeae;
+}
+
+.chart-section {
+    border-bottom: 1px solid #e6e4e4;
+    border-top: 1px solid #e6e4e4;
+}
+
+.chart-div {
+    margin: 0;
+}
+
+.close {
+    padding-left: 0.938em
+}
+.close:focus {
+    outline: none;
+}
+
+button#dropdownManual {
+    border: #6c757d;
+    background: #b9bbbd;
+    height: 35px;
+    width: 33px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+button#dropdownManual:focus {
+    outline: none;
+}
+
+.hamburg-menu div {
+    width: 20px;
+    height: 1px;
+    background-color: #fff;
+    margin: 4px 0;
+}
+
+.dropdown-toggle::after {
+    content: unset;
+}
+
+.title {
+    bottom: 10px;
+    position: relative;
+    left: 10px;
+}
+
+.modal-footer {
+    justify-content: flex-start;
+}
+
+.save-icon {
+    position: relative;
+    bottom: 6px;
+    left: 6px;
+    font-size: 1.5em;
+}
+
+.no-margin {
+    margin: 0;
+}
+
